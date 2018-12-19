@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Military
 {
-	interface IDriveable
+	public interface IDriveable
 	{
+		int Move(int distance);
 	}
 }
