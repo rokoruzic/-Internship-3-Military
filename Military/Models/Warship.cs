@@ -32,7 +32,7 @@ namespace Military
 		{
 			return base.ToString() + $" | Fuel consumption: {FuelOnGivenDistance(Swim(SwimDistance),NumberOfRides(NumberOfSoldiers))}"; ;
 		}
-		private double FuelOnGivenDistance( int swimDistance, int numberOfRides)
+		private static double FuelOnGivenDistance( int swimDistance, int numberOfRides)
 		{
 			return (double)swimDistance* numberOfRides * 2;
 		}
@@ -42,8 +42,8 @@ namespace Military
 			while (travelTimeCount >= 1)
 			{
 				travelTimeCount--;
-				Random random = new Random();
-				int randomNumber = random.Next(0, 100);
+				var random = new Random();
+				var randomNumber = random.Next(0, 100);
 				if (randomNumber < 50)
 				{
 					distance += 3;
@@ -54,7 +54,7 @@ namespace Military
 		}
 		private int NumberOfRides(int numberOfSoldiers)
 		{
-			int numberOfRides = 1;
+			var numberOfRides = 1;
 			if (numberOfSoldiers == 0)
 				numberOfRides = 0;
 			while (numberOfSoldiers > Capacity)
