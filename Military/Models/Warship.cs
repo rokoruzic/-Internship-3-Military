@@ -16,13 +16,53 @@ namespace Military
 			AverageSpeed = AverageSpeed.Warship;
 			Weight = Weight.Warship;
 		}
+		private int _NumberOfSoldiers { get; set; }
+		public int NumberOfSoldiers
+		{
+			get { return _NumberOfSoldiers; }
+			set { _NumberOfSoldiers = value; }
+		}
+		private int _SwimDistance { get; set; }
+		public int SwimDistance
+		{
+			get { return _SwimDistance; }
+			set { _SwimDistance = value; }
+		}
 		public override string ToString()
 		{
-			return base.ToString();
+			return base.ToString() + $" | Fuel consumption: {FuelOnGivenDistance(Swim(SwimDistance),NumberOfRides(NumberOfSoldiers))}"; ;
+		}
+		private double FuelOnGivenDistance( int swimDistance, int numberOfRides)
+		{
+			return (double)swimDistance* numberOfRides * 2;
 		}
 		public int Swim(int distance)
 		{
-			return distance += 3;
+			var travelTimeCount = (double)(distance / (int)AverageSpeed) * 6;
+			while (travelTimeCount >= 1)
+			{
+				travelTimeCount--;
+				Random random = new Random();
+				int randomNumber = random.Next(0, 100);
+				if (randomNumber < 50)
+				{
+					distance += 3;
+					travelTimeCount += 0.5;
+				}
+			}
+			return distance;
+		}
+		private int NumberOfRides(int numberOfSoldiers)
+		{
+			int numberOfRides = 1;
+			if (numberOfSoldiers == 0)
+				numberOfRides = 0;
+			while (numberOfSoldiers > Capacity)
+			{
+				numberOfRides++;
+				numberOfSoldiers -= Capacity;
+			}
+			return numberOfRides;
 		}
 	}
 }
