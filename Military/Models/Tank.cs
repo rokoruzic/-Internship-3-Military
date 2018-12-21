@@ -22,20 +22,18 @@ namespace Military
 			set { _NumberOfSoldiers = value; }
 		}
 		private int _MoveDistance { get; set; }
-
 		public int MoveDistance
 		{
 			get { return _MoveDistance; }
-
 			set { _MoveDistance = value; }
 		}
 		public override string ToString()
 		{
 			return base.ToString() + $" | Fuel consumption: {FuelOnGivenDistance(Move(MoveDistance), NumberOfRides(NumberOfSoldiers))}"; ;
 		}
-		private static double FuelOnGivenDistance(int moveDistance, int numberOfRides)
+		public  double FuelOnGivenDistance(int moveDistance, int numberOfRides)
 		{
-			return (double)moveDistance * numberOfRides * 0.3;
+			return (double)moveDistance * numberOfRides * (FuelConsumption / 100);
 		}
 		public int Move(int distance)
 		{
@@ -52,18 +50,6 @@ namespace Military
 				}
 			}
 			return distance;
-		}
-		private int NumberOfRides(int numberOfSoldiers)
-		{
-			var numberOfRides = 1;
-			if (numberOfSoldiers == 0)
-				numberOfRides = 0;
-			while (numberOfSoldiers > Capacity)
-			{
-				numberOfRides++;
-				numberOfSoldiers -= Capacity;
-			}
-			return numberOfRides;
 		}
 	}
 }

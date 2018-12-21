@@ -7,14 +7,27 @@ namespace Military
 {
 	public abstract  class Vehicle
 	{
-		public Guid  ID { get; set;}
-		public Weight Weight { get; set; }
-		public AverageSpeed AverageSpeed { get; set; }
-		public double FuelConsumption { get; set; }
-		public int Capacity { get; set; }
+		protected Guid  ID { get; set;}
+		protected Weight Weight { get; set; }
+		protected AverageSpeed AverageSpeed { get; set; }
+		protected double FuelConsumption { get; set; }
+		protected int Capacity { get; set; }
+
 		public override string ToString()
 		{
-			return $"ID: {ID} | Weight : {(int)Weight} | Average speed: {(int)AverageSpeed} | Capacity: {Capacity}";
+			return $"ID: {ID} | Weight : {(int) Weight} | Average speed: {(int) AverageSpeed} | Capacity: {Capacity}";
+		}
+		public virtual  int NumberOfRides(int numberOfSoldiers)
+		{
+				var numberOfRides = 1;
+				if (numberOfSoldiers == 0)
+					numberOfRides = 0;
+				while (numberOfSoldiers > Capacity)
+				{
+					numberOfRides++;
+					numberOfSoldiers -= Capacity;
+				}
+				return numberOfRides;
 		}
 	}
 }

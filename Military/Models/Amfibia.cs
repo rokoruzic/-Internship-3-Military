@@ -17,6 +17,7 @@ namespace Military
 			AverageSpeed = AverageSpeed.Amfibia;
 			Weight = Weight.Amfibia;
 		}
+		public double TotalFuel { get; set; }
 		private int _NumberOfSoldiers { get; set; }
 		public int NumberOfSoldiers
 		{
@@ -24,7 +25,6 @@ namespace Military
 			set { _NumberOfSoldiers = value; }
 		}
 		private int _SwimDistance { get; set; }
-		
 		public int SwimDistance
 		{
 			get { return _SwimDistance; }
@@ -38,24 +38,11 @@ namespace Military
 		}
 		public override string ToString()
 		{
-			return base.ToString() + $" | Fuel consumption: {FuelOnGivenDistance(Swim(SwimDistance),Move(MoveDistance),NumberOfRides(NumberOfSoldiers))}";
+			return base.ToString() + $" | Fuel consumption: {FuelOnGivenDistance(Swim(SwimDistance), Move(MoveDistance), NumberOfRides(NumberOfSoldiers))}";
 		}
-		private static double FuelOnGivenDistance(int moveDistance, int swimDistance, int numberOfRides)
+		public  double FuelOnGivenDistance(int moveDistance, int swimDistance, int numberOfRides)
 		{
-			return (double)((moveDistance + swimDistance) * numberOfRides) * 0.7;
-		}
-		private  int NumberOfRides(int numberOfSoldiers)
-		{
-			var numberOfRides = 1;
-			if (numberOfSoldiers == 0)
-				numberOfRides = 0;
-			while (numberOfSoldiers > Capacity)
-			{
-				numberOfRides++;
-				numberOfSoldiers -= Capacity;
-
-			}
-			return numberOfRides;
+			return (double)((moveDistance + swimDistance) * numberOfRides) * (FuelConsumption/100);
 		}
 		public int Move(int distance)
 		{

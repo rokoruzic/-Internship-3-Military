@@ -30,11 +30,11 @@ namespace Military
 		}
 		public override string ToString()
 		{
-			return base.ToString() + $" | Fuel consumption: {FuelOnGivenDistance(Swim(SwimDistance),NumberOfRides(NumberOfSoldiers))}"; ;
+			return base.ToString() + $" | Fuel consumption: { FuelOnGivenDistance(Swim(SwimDistance), NumberOfRides(NumberOfSoldiers))}"; ;
 		}
-		private static double FuelOnGivenDistance( int swimDistance, int numberOfRides)
+		public  double FuelOnGivenDistance( int swimDistance, int numberOfRides)
 		{
-			return (double)swimDistance* numberOfRides * 2;
+			return (double)swimDistance* numberOfRides * (FuelConsumption / 100);
 		}
 		public int Swim(int distance)
 		{
@@ -51,18 +51,6 @@ namespace Military
 				}
 			}
 			return distance;
-		}
-		private int NumberOfRides(int numberOfSoldiers)
-		{
-			var numberOfRides = 1;
-			if (numberOfSoldiers == 0)
-				numberOfRides = 0;
-			while (numberOfSoldiers > Capacity)
-			{
-				numberOfRides++;
-				numberOfSoldiers -= Capacity;
-			}
-			return numberOfRides;
 		}
 	}
 }
