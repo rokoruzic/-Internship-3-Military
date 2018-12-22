@@ -24,7 +24,7 @@ namespace Military
 					numberOfRides = 0;
 				while (numberOfSoldiers > Capacity)
 				{
-					numberOfRides++;
+					numberOfRides+=2;
 					numberOfSoldiers -= Capacity;
 				}
 				return numberOfRides;
