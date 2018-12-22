@@ -30,7 +30,7 @@ namespace Military
 		}
 		public override string ToString()
 		{
-			return base.ToString() + $" | Fuel consumption: { FuelOnGivenDistance(Swim(SwimDistance), NumberOfRides(NumberOfSoldiers))}"; ;
+			return base.ToString() + $" | Fuel consumption: { FuelOnGivenDistance(Swim(SwimDistance), NumberOfRides(NumberOfSoldiers))} litres"; ;
 		}
 		public  double FuelOnGivenDistance( int swimDistance, int numberOfRides)
 		{

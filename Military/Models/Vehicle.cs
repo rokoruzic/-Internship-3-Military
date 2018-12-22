@@ -15,7 +15,7 @@ namespace Military
 
 		public override string ToString()
 		{
-			return $"ID: {ID} | Weight : {(int) Weight} | Average speed: {(int) AverageSpeed} | Capacity: {Capacity}";
+			return $"ID: {ID} | Weight: {(int) Weight} kg | Average speed: {(int) AverageSpeed} km/h | Capacity: {Capacity}";
 		}
 		public virtual  int NumberOfRides(int numberOfSoldiers)
 		{
